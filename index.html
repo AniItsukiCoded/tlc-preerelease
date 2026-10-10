@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>THE LONG HALLS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Rye&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><filter id="rough"><feTurbulence baseFrequency=".05 .08" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter></svg>
+<canvas id="gl"></canvas>
+<div id="chasefx"></div><div id="vig"></div><div id="lockerfx" class="hidden"></div><div id="grain"></div><div id="flash"></div>
+
+<div id="hud" class="hidden">
+  <div id="dot"></div>
+  <div id="fuses"><i></i><i></i><i></i><i></i><span id="obj">FIND THE FUSES</span></div>
+  <div id="stam"><i id="stamfill"></i></div>
+  <div id="inv">
+    <div id="bat"><span>Flashlight</span><b><i id="batfill"></i></b></div>
+    <div id="botn" class="hidden"><span>Bottles</span><u id="botc">0</u><em>G to throw</em></div>
+    <div id="keyn" class="hidden"><span>Brass key</span></div>
+    <div id="notn"><span>Notes</span><u id="notc">0</u><em>/ 6</em></div>
+  </div>
+  <div id="note" class="hidden"><p></p></div>
+  <div id="prompt"></div><div id="msg"></div><div id="lockhint" class="hidden">CLICK TO LOOK AROUND</div>
+</div>
+
+<div id="card" class="hidden"><h1>THE LONG<br>HALLS</h1><div>the boiled one</div></div>
+
+<div id="menu" class="screen">
+  <div id="ver">v2.0.0</div>
+  <div id="menuL">
+    <button class="gb" id="start">Play</button>
+    <button class="gb" id="mSet">Options</button>
+    <button class="gb" id="mHow">How to play</button>
+    <button class="gb" id="mQuit">Quit</button>
+  </div>
+  <div id="logo"><h1>THE LONG<br>HALLS</h1><div class="leg">the boiled one</div></div>
+  <div id="ns">Not alone</div>
+</div>
+
+<div id="how" class="screen hidden">
+  <h2>How to play</h2>
+  <div class="pan">
+    <p>The power is out and the exit is sealed. Search the <b>rooms</b> off the halls for <b>4 fuses</b> glowing on pedestals, then <b>open the exit</b> and walk into the light.</p>
+    <p>Close <b>doors</b> behind you. A shut door hides you from his eyes, and an open one you did not open means he has already been through.</p>
+    <p>Your flashlight runs on <b>batteries</b>. Take <b>bottles</b> and throw one: he will go and look. A <b>brass key</b> opens the room he never visits. <b>Notes</b> tell you what happened here.</p>
+    <p><b>Lockers</b> are your only shelter. If he <b>sees you climb in</b>, he will drag you out. Sprinting is loud. Lights fail. Don't stop moving.</p>
+    <div class="keys">WASD move &nbsp;·&nbsp; SHIFT sprint &nbsp;·&nbsp; MOUSE look &nbsp;·&nbsp; E interact / hide &nbsp;·&nbsp; F flashlight &nbsp;·&nbsp; G throw bottle &nbsp;·&nbsp; ESC pause</div>
+  </div>
+  <button class="gb sm bx" id="hBack">Back ›</button>
+</div>
+
+<div id="pause" class="screen hidden">
+  <h2>Paused</h2>
+  <div class="stats"><span id="pFuses"></span><span id="pTime"></span></div>
+  <div class="col1"><button class="gb" id="pRes">Resume</button><button class="gb" id="pSet">Options</button><button class="gb" onclick="location.reload()">Abandon run</button></div>
+  <div class="keys">ESC or click Resume to continue</div>
+</div>
+
+<div id="settings" class="screen hidden">
+  <h2>Options</h2>
+  <div id="optBox"></div>
+  <button class="gb sm bx" id="sBack">Back ›</button>
+</div>
+
+<div id="over" class="screen hidden"><h1 id="overT"></h1><p id="overP"></p><div class="keys" id="overS"></div><button class="gb" onclick="location.reload()">Again</button></div>
+<div id="quit" class="screen hidden"><h2>There is no leaving.</h2></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/model.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/level.js"></script>
+<script src="js/props.js"></script>
+<script src="js/enemy.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/main.js"></script>
+</body></html>

@@ -1,0 +1,70 @@
+:root{--c:#ece6d8;--r:#a31616}
+*{margin:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#000;color:var(--c);font-family:'IM Fell English',Georgia,serif;font-style:italic;user-select:none}
+#gl{position:fixed;inset:0;width:100%;height:100%}
+#vig{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 35%,rgba(8,2,0,.92) 100%);opacity:.8}
+#chasefx{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,rgba(160,0,0,.55) 100%);opacity:0}
+#lockerfx{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 50% 48%,transparent 35%,rgba(0,0,0,.9) 100%)}
+#grain{position:fixed;inset:-50%;pointer-events:none;opacity:.09;animation:g .4s steps(4) infinite;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes g{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+#flash{position:fixed;inset:0;background:#700;opacity:0;pointer-events:none}
+#hud{position:fixed;inset:0;pointer-events:none;letter-spacing:.08em;font-size:17px;font-style:italic;font-family:'IM Fell English',Georgia,serif;text-shadow:0 2px 0 #000,0 0 14px rgba(0,0,0,.9)}
+#dot{position:absolute;top:50%;left:50%;width:3px;height:3px;margin:-1px;border-radius:50%;background:rgba(220,210,190,.45)}
+#fuses{position:absolute;top:22px;left:26px;display:flex;gap:8px;align-items:center}
+#fuses i{width:8px;height:22px;border:1px solid #6b5a30;border-radius:3px;background:#0b0907;transition:.4s}
+#fuses i.on{background:#ffbf55;box-shadow:0 0 12px #ff9a2a;border-color:#ffd98a}
+#obj{margin-left:12px;opacity:.7;font-size:19px;letter-spacing:.04em}
+#stam{position:absolute;bottom:26px;left:50%;width:160px;height:3px;margin-left:-80px;background:#1a1a1a}
+#stamfill{display:block;height:100%;background:#8a8070;width:100%}
+#prompt{position:absolute;top:58%;width:100%;text-align:center;color:#ece6d8;font-size:24px;letter-spacing:.06em}
+#msg{position:absolute;top:30%;width:100%;text-align:center;font-style:italic;font-size:30px;opacity:0;transition:opacity 1s;letter-spacing:.04em}
+#lockhint{position:absolute;bottom:60px;width:100%;text-align:center;opacity:.7}
+.screen{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:30px;overflow:hidden}
+#menu{display:block;background:linear-gradient(90deg,rgba(0,0,0,.72),transparent 55%),radial-gradient(transparent 55%,rgba(0,0,0,.75))}
+#pause,#how,#settings{background:rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+#over{background:radial-gradient(#1a0b0b,#000 75%)}#quit{background:#000;z-index:9}
+.gb{background:none;border:0;color:var(--c);font:italic 62px 'IM Fell English',Georgia,serif;text-align:left;cursor:pointer;text-shadow:0 3px 0 #000,0 0 22px rgba(0,0,0,.9);transition:transform .15s,text-shadow .15s,color .15s;padding:2px 0}
+.gb:hover{transform:translateX(14px);color:#fff;text-shadow:0 3px 0 #000,0 0 24px #b11}
+.gb.sm{font-size:38px}.gb.bx{border:3px solid var(--c);padding:6px 26px;position:absolute;right:5%;bottom:6%}
+.gb.bx:hover{transform:none;background:rgba(255,255,255,.12)}
+#menuL{position:absolute;left:6%;top:42%;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+#logo{position:absolute;right:5%;top:5%;text-align:right}
+#logo h1{font-family:Rye,'IM Fell English',serif;font-style:normal;font-weight:400;font-size:clamp(44px,8vw,120px);line-height:.95;color:#f4f0e6;letter-spacing:.02em;text-shadow:0 5px 0 #000,0 0 40px rgba(160,0,0,.5);filter:url(#rough)}
+.leg{font-size:clamp(26px,3.6vw,54px);color:#fff;margin-top:6px;text-shadow:0 3px 0 #000}
+#ver{position:absolute;left:18px;top:14px;opacity:.5;font-size:16px}#ns{position:absolute;right:6%;bottom:6%;font-size:30px;opacity:.85;text-shadow:0 2px 0 #000}
+h2{font-size:clamp(40px,6vw,76px);font-weight:400;text-decoration:underline;text-underline-offset:10px;text-decoration-thickness:2px;text-shadow:0 3px 0 #000}
+h3{font-size:34px;font-weight:400;text-decoration:underline;text-underline-offset:6px;text-align:left;margin-bottom:6px}
+.pan{max-width:680px;line-height:1.5;font-size:20px;display:flex;flex-direction:column;gap:11px;text-shadow:0 2px 0 #000}.pan b{color:#fff}
+.keys{font-size:15px;letter-spacing:.12em;opacity:.65;font-style:normal;font-family:Georgia,serif}
+.stats{display:flex;gap:40px;letter-spacing:.3em;font-size:20px;opacity:.75}.col1{display:flex;flex-direction:column;align-items:center}.col1 .gb{text-align:center;font-size:52px}
+#over h1{font-size:clamp(40px,8vw,90px);color:var(--r);font-weight:400;text-shadow:0 0 30px #500;letter-spacing:.1em}#over p{font-size:24px}
+#optBox{display:flex;gap:6vw;flex-wrap:wrap;justify-content:center;align-items:flex-start;max-width:1200px;text-shadow:0 2px 0 #000}
+.col{display:flex;flex-direction:column;gap:16px;min-width:300px;max-width:440px}
+.cbs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 20px}
+.cb{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:22px;cursor:pointer;text-align:center}.cb input{display:none}
+.cb i{width:34px;height:34px;background:rgba(235,230,215,.8);border-radius:4px;display:block;line-height:34px;color:#222;font-style:normal;font-size:26px}
+.cb input:checked+i::after{content:'✓'}
+.sl{display:flex;flex-direction:column;gap:6px;font-size:22px;text-align:center}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;background:rgba(235,230,215,.85);border-radius:5px;outline:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:30px;background:#3a3a3a;border:2px solid #ddd;border-radius:3px;cursor:pointer}
+input[type=range]::-moz-range-thumb{width:20px;height:28px;background:#3a3a3a;border:2px solid #ddd;border-radius:3px;cursor:pointer}
+#dName{font-size:32px;margin-bottom:8px}
+#dBox{border:4px solid var(--c);padding:16px 20px;text-align:left;font-size:22px;line-height:1.5;background:rgba(0,0,0,.3)}#dBox h4{font-size:36px;font-weight:400;text-decoration:underline;margin-bottom:8px;text-align:center}
+#dBox li{list-style:none;margin:4px 0}#dBox li::before{content:'* '}
+.rs{font-size:24px;opacity:.7;cursor:pointer;align-self:center;background:none;border:0;color:var(--c);font-family:inherit;font-style:italic}.rs:hover{opacity:1}
+.hidden{display:none!important}
+@media(max-width:900px){.gb{font-size:44px}.cbs{grid-template-columns:repeat(2,1fr)}}
+
+#inv{position:absolute;left:26px;bottom:26px;display:flex;flex-direction:column;gap:9px;font-size:18px}
+#inv>div{display:flex;align-items:baseline;gap:12px;opacity:.85}#inv span{min-width:96px;opacity:.7}
+#inv u{text-decoration:none;color:#fff}#inv em{opacity:.5;font-size:15px}
+#bat b{display:block;width:110px;height:5px;background:#1a1a1a;align-self:center;border:1px solid #3a3226}
+#batfill{display:block;height:100%;width:100%;background:#d8c9a0;transition:background .3s}
+#keyn{color:#e0b84a}#keyn span{opacity:1}
+#note{position:absolute;left:50%;bottom:15%;transform:translateX(-50%) rotate(-.6deg);width:min(460px,80vw);padding:26px 30px;background:#cbc2a2;color:#2a2418;font-size:21px;line-height:1.5;letter-spacing:.01em;text-shadow:none;box-shadow:0 0 0 1px #6a5f43,0 14px 40px rgba(0,0,0,.8);animation:np .35s ease-out}
+@keyframes np{from{opacity:0;transform:translateX(-50%) translateY(14px) rotate(-.6deg)}}
+#card{position:fixed;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;background:#000;animation:cardf 5.5s forwards}
+#card h1{font-family:Rye,'IM Fell English',serif;font-style:normal;font-weight:400;font-size:clamp(44px,9vw,130px);line-height:.95;text-align:center;color:#f4f0e6;text-shadow:0 5px 0 #000,0 0 40px rgba(160,0,0,.5);filter:url(#rough)}
+#card div{font-size:clamp(24px,3.6vw,50px);margin-top:12px;color:#fff;opacity:.9}
+@keyframes cardf{0%,45%{opacity:1}100%{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){#grain{animation:none}#card{animation-duration:2s}}
