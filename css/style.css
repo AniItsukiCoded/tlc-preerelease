@@ -68,3 +68,15 @@ input[type=range]::-moz-range-thumb{width:20px;height:28px;background:#3a3a3a;bo
 #card div{font-size:clamp(24px,3.6vw,50px);margin-top:12px;color:#fff;opacity:.9}
 @keyframes cardf{0%,45%{opacity:1}100%{opacity:0;visibility:hidden}}
 @media(prefers-reduced-motion:reduce){#grain{animation:none}#card{animation-duration:2s}}
+
+#inv>div.sel{opacity:1}#inv>div.sel span{opacity:1;color:#fff}#inv>div.sel span::before{content:'› '}
+
+#lids{position:fixed;inset:0;z-index:3;pointer-events:none}#lids i{position:absolute;left:0;right:0;height:52%;background:#000;box-shadow:0 0 50px 24px #000}#lids i:first-child{top:0}#lids i:last-child{bottom:0}
+#daybn{position:fixed;left:0;right:0;top:34%;text-align:center;z-index:3;pointer-events:none;opacity:0;font-family:Rye,'IM Fell English',serif;font-style:normal;font-size:clamp(44px,9vw,120px);color:#f4f0e6;letter-spacing:.06em;text-shadow:0 5px 0 #000,0 0 40px rgba(160,0,0,.55)}
+#daybn.show{animation:dayb 4.6s ease-out forwards}@keyframes dayb{0%{opacity:0;transform:scale(1.08)}18%{opacity:1}70%{opacity:1}100%{opacity:0;transform:scale(1)}}
+#killfx{position:fixed;inset:0;pointer-events:none;z-index:4}
+#dayl{position:absolute;top:22px;right:26px;font-size:22px;letter-spacing:.2em;opacity:.7}
+#dayscr,#daydone{background:radial-gradient(#150b0b,#000 75%)}#dayscr h1,#daydone h1{font-family:Rye,'IM Fell English',serif;font-style:normal;font-weight:400;font-size:clamp(44px,9vw,110px);color:#f4f0e6;text-shadow:0 5px 0 #000,0 0 40px rgba(160,0,0,.5)}
+#dayscr p,#daydone p{font-size:26px;max-width:640px;opacity:.85}
+
+#warn{z-index:30;background:#000;gap:18px}#warn h2{font-size:56px;color:#d8b04a}#warn p{max-width:760px;font-size:24px;line-height:1.5}#warn .gb{text-align:center}

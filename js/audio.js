@@ -35,4 +35,14 @@ keyget(){[1200,1600,2100].forEach((f,i)=>setTimeout(()=>this.tone(f,.35,'triangl
 paper(){this.noise(.3,.25,3000,'highpass')},
 dead(){this.tone(220,.18,'square',.1,80)},
 locked(){this.tone(110,.12,'square',.14);setTimeout(()=>this.tone(90,.14,'square',.14),110)},
+estep(v,pan,run){if(!this.ctx||v<=.02||this.ctx.state!=='running')return;const c=this.ctx,t=c.currentTime,pn=c.createStereoPanner?c.createStereoPanner():null,out=pn||this.m;if(pn){pn.pan.value=Math.max(-1,Math.min(1,pan));pn.connect(this.m)}
+ const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(run?82:62,t);o.frequency.exponentialRampToValueAtTime(28,t+.24);g.gain.setValueAtTime(1.1*v,t);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.connect(g);g.connect(out);o.start(t);o.stop(t+.3);
+ const s=c.createBufferSource(),f=c.createBiquadFilter(),ng=c.createGain();s.buffer=this.nb;f.type='lowpass';f.frequency.value=run?1100:600;ng.gain.setValueAtTime(.7*v,t);ng.gain.exponentialRampToValueAtTime(.001,t+.2);s.connect(f);f.connect(ng);ng.connect(out);s.start(t,Math.random());s.stop(t+.21);
+ if(v>.25){const s2=c.createBufferSource(),f2=c.createBiquadFilter(),g2=c.createGain();s2.buffer=this.nb;f2.type='bandpass';f2.frequency.value=2200;g2.gain.setValueAtTime(.12*v,t+.05);g2.gain.exponentialRampToValueAtTime(.001,t+.2);s2.connect(f2);f2.connect(g2);g2.connect(out);s2.start(t+.05,Math.random());s2.stop(t+.22)}},
+kill(){const c=this.ctx;if(!c)return;this.tone(42,2.4,'sine',1,16);this.noise(.6,1,220);this.tone(1300,1.2,'sawtooth',.45,80);this.tone(2100,1,'square',.22,260);
+ setTimeout(()=>{this.noise(.3,1,7000,'highpass');this.tone(130,.5,'square',.6,28);this.tone(55,.6,'sine',1,20)},900);
+ setTimeout(()=>this.tone(3900,2.4,'sine',.07,3700),1150);
+ setTimeout(()=>{if(this.out)this.out.gain.setTargetAtTime(0,c.currentTime,.06)},2350)},
+wake(){this.noise(.9,.3,500);this.tone(70,1.4,'sine',.5,40)},
+rustle(){this.noise(.5,.28,900,'bandpass');setTimeout(()=>this.noise(.35,.2,700,'bandpass'),260)},
 setHum(v,f){if(!this.ctx)return;this.hum.gain.value=v;this.ho.frequency.value=70+f*30}};
